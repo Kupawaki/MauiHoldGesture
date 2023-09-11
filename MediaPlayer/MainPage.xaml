@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MediaPlayer.MainPage"
+             xmlns:viewmodel="clr-namespace:MediaPlayer.ViewModels"
+             x:DataType="viewmodel:MainViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Label BackgroundColor="Red" Text="{Binding SimpleText}"/>
+
+            <Frame BackgroundColor="Blue">
+                <Entry Text="{Binding SimpleText}"/>
+            </Frame>
+
+            <Button Text="Add Song" Command="{Binding AddSongCommand}"/>
+
+            <CollectionView ItemsLayout="VerticalList" ItemsSource="{Binding Songs}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <Frame BackgroundColor="Gray" Padding="5" Margin="5">
+                                <Label Text="{Binding .}" HorizontalOptions="Center"/>
+                            </Frame>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
