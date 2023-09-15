@@ -5,7 +5,8 @@ namespace MediaPlayer
 {
     public partial class MainPage : ContentPage
     {
-        int x = 1;
+        bool isPressed = false;
+
         public MainPage(MainViewModel mainViewModel)
         {
             InitializeComponent();
@@ -15,18 +16,26 @@ namespace MediaPlayer
 
         private async void ColorButtonPressed(object sender, EventArgs e)
         {
+            isPressed = true;
+
             await Task.Run(() => {
-                for(int count = 0; count <= 1000; count++)
+                while (isPressed)
                 {
-                    Thread.Sleep(1000);
-                    Debug.WriteLine($"Finished {count} loops");
+                    Debug.WriteLine($"Status is {isPressed}");
+                    Thread.Sleep(500);
+                    if(!isPressed)
+                    {
+                        Debug.WriteLine("Thread should be finished");
+                        return;
+                    }
                 }
             });
         }
 
         private void ColorButtonReleased(object sender, EventArgs e)
         {
-           
+            Debug.WriteLine("Button Released");
+            isPressed = false;
         }
     }
 }
