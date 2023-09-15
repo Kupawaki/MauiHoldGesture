@@ -24,12 +24,17 @@
                     <DataTemplate>
                         <VerticalStackLayout>
                             <Frame BackgroundColor="Gray" Padding="5" Margin="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="3" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=RemoveSongCommand}" CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
                                 <Label Text="{Binding .}" HorizontalOptions="Center"/>
                             </Frame>
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <Button Text="Change Color" Pressed="ColorButtonPressed" Released="ColorButtonReleased"/>
 
         </VerticalStackLayout>
     </ScrollView>

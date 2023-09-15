@@ -37,5 +37,15 @@ namespace MediaPlayer.ViewModels
             }
             Songs.Add(SimpleText);
         }
+
+        [RelayCommand]
+        void RemoveSong()
+        {
+            Debug.WriteLine("Called RemoveSong");
+            if(Songs.Contains(SimpleText))
+            {
+                Songs.Remove(SimpleText);
+            }
+        }
     }
 }
