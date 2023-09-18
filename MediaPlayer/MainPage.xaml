@@ -35,6 +35,9 @@
             </CollectionView>
 
             <Button Text="Change Color" Pressed="ColorButtonPressed" Released="ColorButtonReleased"/>
+            <Frame x:Name="colorFR">
+                <Label Text="Watch me change colors"/>
+            </Frame>
 
         </VerticalStackLayout>
     </ScrollView>
